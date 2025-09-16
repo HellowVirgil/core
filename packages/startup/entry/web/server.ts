@@ -1,6 +1,7 @@
 import 'tsconfig-paths/register';
 
 import { Injector } from '@opensumi/di';
+import { CollaborationModule } from '@opensumi/ide-collaboration/lib/node';
 import { AIBackSerivceToken } from '@opensumi/ide-core-common';
 import { startServer } from '@opensumi/ide-dev-tool/src/server';
 import { ExpressFileServerModule } from '@opensumi/ide-express-file-server/lib/node';
@@ -17,6 +18,6 @@ const injector = new Injector([
 ]);
 
 startServer({
-  modules: [...CommonNodeModules, ExpressFileServerModule, OpenerModule],
+  modules: [...CommonNodeModules, ExpressFileServerModule, OpenerModule, CollaborationModule],
   injector,
 });

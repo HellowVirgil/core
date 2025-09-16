@@ -1,22 +1,25 @@
 import { AI_CHAT_LOGO_AVATAR_ID } from '@opensumi/ide-ai-native';
+import { CollaborationModule } from '@opensumi/ide-collaboration/lib/browser';
 import { SlotLocation } from '@opensumi/ide-core-browser';
 import { DESIGN_MENUBAR_CONTAINER_VIEW_ID, DESIGN_MENU_BAR_RIGHT } from '@opensumi/ide-design';
 import { NotebookModule } from '@opensumi/ide-notebook/lib/browser';
 import { AIModules } from '@opensumi/ide-startup/lib/browser/common-modules';
 import { MENU_BAR_FEATURE_TIP } from '@opensumi/ide-startup/lib/browser/menu-bar-help-icon';
 
+import { CollaborationUsersId } from '../sample-modules/collaboration-users/collaboration-users.contribution';
+
 import { getDefaultClientAppOpts, renderApp } from './render-app';
 
 renderApp(
   getDefaultClientAppOpts({
-    modules: [...AIModules, NotebookModule],
+    modules: [...AIModules, NotebookModule, CollaborationModule],
     opts: {
       layoutViewSize: {
         menubarHeight: 32,
       },
       layoutConfig: {
         [DESIGN_MENU_BAR_RIGHT]: {
-          modules: [MENU_BAR_FEATURE_TIP, AI_CHAT_LOGO_AVATAR_ID],
+          modules: [MENU_BAR_FEATURE_TIP, AI_CHAT_LOGO_AVATAR_ID, CollaborationUsersId],
         },
         [SlotLocation.top]: {
           modules: [DESIGN_MENUBAR_CONTAINER_VIEW_ID],
